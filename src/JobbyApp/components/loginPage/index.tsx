@@ -4,7 +4,7 @@ import { History } from 'history'
 import { Redirect } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 import Cookies from 'js-cookie'
-import stores from '../../../Common/stores/index'
+import JobbyAppStore from '../../stores/JobbyAppStore'
 import {
    ErrMsg,
    LoginPageWebsiteLogo,
@@ -26,9 +26,15 @@ const passwordText = 'PASSWORD'
 const websiteLogoUrl = 'https://assets.ccbp.in/frontend/react-js/logo-img.png'
 const websiteLogoImgAltText = 'website-logo'
 
+interface InjectedProps extends LoginFormProps {
+   jobbyAppStore: JobbyAppStore
+}
+
 @inject('jobbyAppStore')
 @observer
 class LoginPage extends Component<LoginFormProps> {
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
+
    onSubmitSuccess = (jwtToken: string): void => {
       const { history } = this.props
       Cookies.set('jwt_token', jwtToken, { expires: 30 })
@@ -36,7 +42,7 @@ class LoginPage extends Component<LoginFormProps> {
    }
 
    onSubmitForm = async (event: React.FormEvent<HTMLInputElement>) => {
-      const { jobbyAppStore } = stores
+      const { jobbyAppStore } = this.getInjectedProps()
       const { username, password } = jobbyAppStore
       const userDetails = { username, password }
       event.preventDefault()
@@ -54,7 +60,7 @@ class LoginPage extends Component<LoginFormProps> {
       }
    }
    render(): JSX.Element {
-      const { jobbyAppStore } = stores
+      const { jobbyAppStore } = this.getInjectedProps()
       const { showSubmitError, errorMsg } = jobbyAppStore
       const JwtToken = Cookies.get('jwt_token')
       if (JwtToken !== undefined) {

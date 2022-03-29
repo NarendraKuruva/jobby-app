@@ -5,7 +5,6 @@ import { MdLocationPin, MdOpenInNew } from 'react-icons/md'
 //eslint-disable-next-line
 import { match } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import stores from '../../../Common/stores'
 import Header from '../Header'
 import SimilarJobItem from '../SimilarJobItem'
 
@@ -57,7 +56,7 @@ interface Params {
    id: string
 }
 
-interface InjectedProps {
+interface InjectedProps extends JobItemDetailsProps {
    jobbyAppStore: JobbyAppStore
 }
 
@@ -76,10 +75,10 @@ const retyrBtnText = 'Retry'
 @inject('jobbyAppStore')
 @observer
 class JobItemDetails extends Component<JobItemDetailsProps> {
-   // getInjectedProps = (): InjectedProps => this.props as InjectedProps
+   getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
    componentDidMount() {
-      const { jobbyAppStore } = stores
+      const { jobbyAppStore } = this.getInjectedProps()
       const id = this.getId()
       jobbyAppStore.getJobItemDetails(id)
    }
@@ -103,7 +102,7 @@ class JobItemDetails extends Component<JobItemDetailsProps> {
    }
 
    renderJobItemDetailsSuccessView = (): JSX.Element => {
-      const { jobbyAppStore } = stores
+      const { jobbyAppStore } = this.getInjectedProps()
       const { jobItemDetails } = jobbyAppStore
       const {
          title,
@@ -189,7 +188,7 @@ class JobItemDetails extends Component<JobItemDetailsProps> {
 
    renderJobItemDetailsLoadingView = (): JSX.Element => (
       <JobItemDetailsLoadingContainer>
-         <Loader type='ThreeDots' color='#ffffff' height='50' width='50' />
+         <Loader type='ThreeDots' color='#ffffff' height={50} width={50} />
       </JobItemDetailsLoadingContainer>
    )
 
@@ -205,7 +204,7 @@ class JobItemDetails extends Component<JobItemDetailsProps> {
    )
 
    renderJobItemDetails = () => {
-      const { jobbyAppStore } = stores
+      const { jobbyAppStore } = this.getInjectedProps()
       const { jobDetailsApiStatus } = jobbyAppStore
       switch (jobDetailsApiStatus) {
          case 200:

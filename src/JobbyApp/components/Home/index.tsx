@@ -1,7 +1,6 @@
 import { inject, observer } from 'mobx-react'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import stores from '../../../Common/stores'
 import Header from '../Header'
 import {
    HomeContentContainer,

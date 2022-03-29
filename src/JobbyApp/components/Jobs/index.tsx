@@ -48,7 +48,7 @@ class JobsPage extends Component {
 
    renderAllJobsLoadingView = (): JSX.Element => (
       <AllJobsLoadingContainer>
-         <Loader type='ThreeDots' color='#ffffff' height='50' width='50' />
+         <Loader type='ThreeDots' color='#ffffff' height={50} width={50} />
       </AllJobsLoadingContainer>
    )
    renderAllJobsFailureView = (): JSX.Element => (

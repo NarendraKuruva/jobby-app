@@ -4,7 +4,6 @@ import sampleProfile from '../../fixtures/sampleProfile.json'
 import sampleJobs from '../../fixtures/sampleJobs.json'
 import sampleJobDetails from '../../fixtures/sampleJobItemDetails.json'
 import JobbyAppService from '.'
-import JobItemDetailsModel from '../../stores/models/JobItemDetailsModel'
 
 interface EndpointTypes {
    searchInputVal: string

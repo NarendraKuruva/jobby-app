@@ -10,6 +10,7 @@ export const StyledLoginButton = styled.button`
    padding-top: 8px;
    padding-bottom: 8px;
    border-radius: 4px;
+   margin-top: 18px;
 `
 export const StyledInputElement = styled.input`
    border: 1px solid #7e858e;
@@ -20,7 +21,6 @@ export const StyledInputElement = styled.input`
 export const StyledLoginCard = styled.form`
    background-color: #272727;
    height: 40vh;
-   //    width: 50vw;
    padding: 30px;
    display: flex;
    flex-direction: column;

@@ -30,7 +30,6 @@ class JobbyAppServiceApi implements JobbyAppService {
 
    getAllJobsData = (apiEndpoint: EndpointTypes): Promise<any> => {
       const endpoint = `/jobs?employment_type=${apiEndpoint.employmentTypesVal}&minimum_package=${apiEndpoint.activeMinPackageVal}&search=${apiEndpoint.searchInputVal}`
-      console.log(apiEndpoint)
       return this.networkCallWithFetch(this.api, endpoint, {}, apiMethods.get)
    }
    getJobDetails(id: string): Promise<any> {

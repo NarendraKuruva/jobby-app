@@ -41,7 +41,9 @@ export const LocationAndCTCContainer = styled.div`
    margin-top: 30px;
    align-items: center;
 `
-export const EmplomentTypeAndLocationContainer = styled.div``
+export const EmplomentTypeAndLocationContainer = styled.div`
+   display: flex;
+`
 export const LocationContainer = styled.div`
    display: flex;
    align-items: center;

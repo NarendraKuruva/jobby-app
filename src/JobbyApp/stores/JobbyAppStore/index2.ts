@@ -112,7 +112,6 @@ import ProfileModel from '../models/ProfileModel'
 //                )
 
 //                this.jobItems = updatedData
-//                // console.log(this.jobItems)
 //             }
 //          )
 //          .catch(error => {

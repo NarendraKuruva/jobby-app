@@ -172,7 +172,6 @@ class JobbyAppStore {
 
    @action.bound onClickMinSalary(event): void {
       this.activeMinPackage = event.target.value
-      console.log(this.activeMinPackage)
       this.getAllJobDetails()
    }
 
@@ -185,7 +184,6 @@ class JobbyAppStore {
             each => each !== selectedValue
          )
          this.getAllJobDetails()
-         console.log(this.activeMinPackage)
       } else {
          this.employmentTypes.push(selectedValue)
          this.getAllJobDetails()
